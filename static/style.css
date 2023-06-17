@@ -23,6 +23,17 @@ body {
   border-radius: 15px;
 }
 
+.mensagem{
+  color: #d2d2d2;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
 .label {
   color: #d2d2d2;
   text-align: left;
