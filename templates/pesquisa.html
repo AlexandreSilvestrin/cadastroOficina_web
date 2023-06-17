@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pesquisa</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="title">Dados do Cliente</div>
+            <div class="label">Nome:</div>
+            <input class="input" type="text" id="nometxt" readonly />
+
+            <div class="label">Telefone:</div>
+            <input class="input" type="text" id="telltxt" readonly />
+
+            <div class="label">Placa:</div>
+            <input class="input" type="text" id="placatxt" readonly  />
+
+            <div class="label">Carro:</div>
+            <input class="input" type="text" id="carrotxt" readonly/>
+
+            <div class="label">Info:</div>
+            <textarea class="textarea" id="infotxt" rows="5" readonly ></textarea>
+
+            <div class="button-container">
+                <button class="button" id="btn_alterar" onclick="habilitarCampos()">ALTERAR</button>
+                <button class="button" id="btn_salvar">SALVAR</button>
+            </div>
+        </div>
+
+        <script>
+            function habilitarCampos() {
+  var campos = document.querySelectorAll('.input, .textarea');
+  for (var i = 0; i < campos.length; i++) {
+    campos[i].readOnly = false;
+  }
+}
+
+        </script>
+    </body>
+</html>

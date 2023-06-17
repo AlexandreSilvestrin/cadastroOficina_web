@@ -1,0 +1,81 @@
+body {
+  background-color: #0d0e11;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.title{
+  color: #d2d2d2;
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.container {
+  background-color: #17181d;
+  width: 600px;
+  margin: 100px auto;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.label {
+  color: #d2d2d2;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.input {
+  background-color: #393e4f;
+  color: #d2d2d2;
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
+  border: 2px solid #393e4f;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.textarea {
+  background-color: #393e4f;
+  color: #d2d2d2;
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
+  border: 2px solid #393e4f;
+  border-radius: 15px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.button-container {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.button {
+  color: #f7f7f7;
+  width: 150px;
+  border: none;
+  border-radius: 15px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#btn_pesquisar{
+  background-color: #080161;
+}
+
+#btn_salvar{
+  background-color: #0f8100;
+  margin-left: auto;
+}
+
+#btn_alterar{
+  background-color: #680000;
+  float: left;
+}
