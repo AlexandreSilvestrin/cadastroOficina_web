@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pesquisa</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="{{tema}}">
+        <h1>Tabela de ocorrencias</h1>
+            <div class="container" id="divList">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>PLACA</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Carro</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes[::-1] %}
+                            <tr class="{% if loop.index is divisibleby(2) %}even{% else %}odd{% endif %}">
+                              <td>{{ cliente[0] }}</td>
+                              <td><a href="{{ url_for('link', placa=cliente[1]) }}">{{cliente[1].upper()}}</a></td>
+                              <td>{{ cliente[2] }}</td>
+                              <td>{{ cliente[3] }}</td>
+                              <td>{{ cliente[4] }}</td>
+                              <td>{{ cliente[6] }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+    </body>
+</html>

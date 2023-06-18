@@ -3,34 +3,46 @@
     <head>
         <title>Cadastro</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-
-    <body>
+    <body class="{{tema}}" id="bodyCad">
         <div class="container">
+            <form action="/alterar-tema" method="post">
+                <h2>Cadastro clientes</h2>
+                <button class="button" id="btn_tema" name="tema" type="submit">TEMA</button>
+            </form>
+            <form action="/listar" method="post">
+                <button class="button" id="btn_listar" name="tema" type="submit">LISTAR</button>
+            </form>
             <form action="/cadastro" method="post">
-                <div class="title">Cadastrar Cliente</div>
                 <div class="label">Nome:</div>
-                <input class="input" type="text" name="nometxt" id="nometxt" />
+                <input class="input" type="text" name="nometxt" id="nometxt" required/>
 
                 <div class="label">Telefone:</div>
-                <input class="input" type="text" name="telltxt" id="telltxt" />
+                <input class="input" type="text" name="telltxt" id="telltxt" required/>
 
                 <div class="label">Placa:</div>
-                <input class="input" type="text" name="placatxt" id="placatxt" />
+                <input class="input" type="text" name="placatxt" id="placatxt" required/>
 
                 <div class="label">Carro:</div>
-                <input class="input" type="text" name="carrotxt" id="carrotxt" />
+                <input class="input" type="text" name="carrotxt" id="carrotxt" required/>
 
-                <div class="label">Info:</div>
-                <textarea class="textarea" name="infotxt" id="infotxt" rows="5"></textarea>
-
-
-                <div style="background-color: {{cor}};" class="mensagem">{{ mensagem }}</div>
+                <div class="label">Informações:</div>
+                <textarea class="textarea" name="infotxt" id="infotxt" rows="10" required></textarea>
 
                 <div class="button-container">
-                    <button class="button" id="btn_pesquisar">PESQUISAR</button>
                     <button class="button" id="btn_salvar" name="salvar" type="submit">SALVAR</button>
                 </div>
+
+                <div style="background-color: {{cor}};" class="mensagem">{{ mensagem }}</div>
+            </form>
+        </div>
+        <div class="container">
+            <form  action="/pesquisar"  method="post" id="formP">
+                <button class="button" id="btn_pesquisar" name="btn_pesquisar">PESQUISAR PLACA</button>
+                <input class="inputPes" type="text" name="placaPesquisa" id="placatxtP" required/>
             </form>
         </div>
     </body>

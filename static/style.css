@@ -1,30 +1,56 @@
 body {
-  background-color: #0d0e11;
   justify-content: center;
   align-items: center;
+  font-size: 20px;
+  text-align: center;
   height: 100vh;
-  margin: 0;
-  padding: 0;
+  padding-top: 30px;
   font-family: Arial, sans-serif;
 }
 
-.title{
-  color: #d2d2d2;
+#bodyCad {
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0;
+}
+
+.title {
   text-align: center;
   font-size: 30px;
   margin-top: 10px;
 }
 
 .container {
-  background-color: #17181d;
+  position: relative;
   width: 600px;
-  margin: 100px auto;
+  margin: 0 auto 10px auto;
   padding: 10px;
   border-radius: 15px;
 }
 
-.mensagem{
-  color: #d2d2d2;
+#btn_tema {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.P {
+  margin: 5px;
+}
+
+#labels {
+  width: 800px;
+  height: 500px;
+}
+
+.labels {
+  width: 800px;
+  display: flex;
+}
+
+.mensagem {
   text-align: center;
   width: 100%;
   font-size: 20px;
@@ -35,29 +61,31 @@ body {
 }
 
 .label {
-  color: #d2d2d2;
   text-align: left;
   margin-top: 10px;
 }
 
-.input {
-  background-color: #393e4f;
-  color: #d2d2d2;
+.labelPesquisa {
   width: 100%;
   font-size: 20px;
   box-sizing: border-box;
-  border: 2px solid #393e4f;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 70px;
+}
+
+.input {
+  width: 100%;
+  font-size: 20px;
+  box-sizing: border-box;
   border-radius: 15px;
   padding: 10px;
 }
 
 .textarea {
-  background-color: #393e4f;
-  color: #d2d2d2;
   width: 100%;
   font-size: 20px;
   box-sizing: border-box;
-  border: 2px solid #393e4f;
   border-radius: 15px;
   padding: 10px;
   resize: vertical;
@@ -68,8 +96,11 @@ body {
   text-align: right;
 }
 
+.bcP {
+  text-align: left;
+}
+
 .button {
-  color: #f7f7f7;
   width: 150px;
   border: none;
   border-radius: 15px;
@@ -77,16 +108,127 @@ body {
   cursor: pointer;
 }
 
-#btn_pesquisar{
-  background-color: #080161;
+.inputPes {
+  width: 80%;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 10px;
 }
 
-#btn_salvar{
+#formP {
+  display: flex;
+  align-items: center;
+}
+
+#btn_pesquisar {
+  background-color: #080161;
+  width: 200px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+#btn_listar{
+  background-color: #080161;
+  margin-right: 10px;
+  position: absolute;
+  top: 10px;
+  left: 460px;
+}
+
+#btn_salvar {
   background-color: #0f8100;
   margin-left: auto;
 }
 
-#btn_alterar{
+#btn_excluir {
   background-color: #680000;
-  float: left;
+}
+
+#nomeP {
+  width: 400px;
+}
+
+#tellP {
+  width: 400px;
+}
+
+#carroP {
+  width: 400px;
+}
+
+#placaP {
+  width: 400px;
+}
+
+.IDP {
+  width: 60px;
+}
+
+#teste {
+  margin-left: -30px;
+}
+
+#infoP {
+  width: 780px;
+  height: 300px;
+}
+
+td{
+  width: 200px;
+}
+
+#divList {
+  width: 800px;
+}
+
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  #bodyPeq {
+    overflow-x: hidden;
+  }
+
+  body {
+    padding-top: 10px;
+  }
+
+  .input {
+    max-width: 350px;
+  }
+
+  .labels {
+    flex-direction: column;
+    max-width: 350px;
+  }
+
+  #labels {
+    height: 590px;
+  }
+  #bodyCad {
+    overflow-y: auto;
+  }
+
+  #btn_tema{
+    width: 50px;
+    top: 0px;
+    left: 0px;
+    padding: 5px 0;
+  }
+
+  #btn_listar{
+    width: 50px;
+    top: 0px;
+    left: 310px;
+    padding: 5px 0;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
 }

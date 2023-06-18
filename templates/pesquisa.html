@@ -3,40 +3,43 @@
     <head>
         <title>Pesquisa</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-
-    <body>
-        <div class="container">
-            <div class="title">Dados do Cliente</div>
-            <div class="label">Nome:</div>
-            <input class="input" type="text" id="nometxt" readonly />
-
-            <div class="label">Telefone:</div>
-            <input class="input" type="text" id="telltxt" readonly />
-
-            <div class="label">Placa:</div>
-            <input class="input" type="text" id="placatxt" readonly  />
-
-            <div class="label">Carro:</div>
-            <input class="input" type="text" id="carrotxt" readonly/>
-
-            <div class="label">Info:</div>
-            <textarea class="textarea" id="infotxt" rows="5" readonly ></textarea>
-
-            <div class="button-container">
-                <button class="button" id="btn_alterar" onclick="habilitarCampos()">ALTERAR</button>
-                <button class="button" id="btn_salvar">SALVAR</button>
+    <body class="{{tema}}" id="bodyPeq">
+        {% if veri %}
+            <div class="container">
+                <h1>Não tem ocorrências para a placa {{ placa }}</h1>
+                <a href="{{ url_for('home') }}"><button class="button" id="btn_pesquisar">VOLTAR</button></a>
             </div>
-        </div>
+        {% else %}
+            {% for caso in casos[::-1]%}
+                <div class="container" id="labels">
 
-        <script>
-            function habilitarCampos() {
-  var campos = document.querySelectorAll('.input, .textarea');
-  for (var i = 0; i < campos.length; i++) {
-    campos[i].readOnly = false;
-  }
-}
+                        <h2>Data: {{ caso[6] }}</h2>
+                        <div class="labels">
+                            <input class="input P" id="nomeP" value="Nome: {{ caso[2] }}" disabled>
 
-        </script>
+                            <input class="input P" id="tellP" value="Telefone: {{ caso[3] }}" disabled>
+
+                        </div>
+                        <div class="labels">
+                            <input class="input P" id="carroP" value="Carro: {{ caso[4] }}" disabled>
+
+                            <input class="input P" id="placaP" value="PLACA: {{ caso[1] }}" disabled>
+                        </div>
+                        <div class="labels">
+                            <textarea class="textarea P" name="infotxt" id="infotxt" rows="10" disabled>Informação: {{ caso[5] }}</textarea>
+                        </div>
+                    <form action="/excluir" method="post">
+                        <div class="bcP button-container">
+                            <input class="input P IDP" value="ID" disabled><input class="input P IDP" id='teste' name="id" value="{{caso[0]}}" readonly>
+                            <button class="button" onclick="return confirm('Tem certeza que deseja excluir este item?')" id="btn_excluir">EXCLUIR</button>
+                        </div>
+                    </form>
+                </div>
+            {% endfor %}
+        {% endif %}
     </body>
 </html>
