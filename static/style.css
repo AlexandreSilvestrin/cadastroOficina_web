@@ -96,6 +96,11 @@ h2 {
   text-align: right;
 }
 
+.inline-form {
+  display: inline-block;
+  margin-right: 10px; /* Espaçamento entre os formulários */
+}
+
 .bcP {
   text-align: left;
 }
@@ -109,7 +114,7 @@ h2 {
 }
 
 .inputPes {
-  width: 80%;
+  width: 110px;
   font-size: 20px;
   box-sizing: border-box;
   border-radius: 15px;
@@ -125,7 +130,7 @@ h2 {
   background-color: #080161;
   width: 200px;
   height: 50px;
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 #btn_listar{
@@ -134,6 +139,12 @@ h2 {
   position: absolute;
   top: 10px;
   left: 460px;
+}
+
+#btn_editar{
+    background-color: #e0b700;
+    color: black;
+    margin-left: auto;
 }
 
 #btn_salvar {
@@ -182,6 +193,39 @@ td{
   width: 800px;
 }
 
+.selct{
+    width: 100px;
+    margin-right: 0px;
+}
+
+.table{
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+th:first-child {
+  border-top-left-radius: 20px;
+}
+
+th:last-child {
+  border-top-right-radius: 20px;
+}
+
+td:first-child {
+  border-bottom-left-radius: 20px;
+}
+
+td:last-child {
+  border-bottom-right-radius: 20px;
+}
+
+.selct:hover {
+  background-color: red;
+  font-size: 20px;
+  box-sizing: border-box;
+  border-radius: 15px;
+  padding: 10px;
+}
 
 @media screen and (max-width: 600px) {
   .container {
@@ -206,6 +250,10 @@ td{
     max-width: 350px;
   }
 
+  .button{
+    width: 90px;
+  }
+
   #labels {
     height: 590px;
   }
@@ -220,12 +268,31 @@ td{
     padding: 5px 0;
   }
 
+  #btn_editarr{
+    margin:0;
+    width: 0;
+  }
+
   #btn_listar{
     width: 50px;
     top: 0px;
     left: 310px;
     padding: 5px 0;
   }
+
+  .table th:nth-child(1),
+  .table td:nth-child(1),
+  .table th:nth-child(4),
+  .table td:nth-child(4),
+  .table th:nth-child(6),
+  .table td:nth-child(6) {
+    display: none;
+  }
+
+botaoMOBILE{
+	display: flex;
+ flex-direction: column;
+}
 
   h1 {
     font-size: 20px;

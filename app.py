@@ -23,11 +23,28 @@ def cadastrar():
     return redirect(url_for('home'))
 
 
+@app.route('/atualizar', methods=['POST', 'GET'])
+def atualizar():
+    if request.method == 'POST':
+        idd = request.form['id']
+        nome = request.form['nometxt'].strip()
+        tell = request.form['telltxt'].strip()
+        placa = request.form['placatxt'].strip().lower()
+        carro = request.form['carrotxt'].strip()
+        info = request.form['infotxt'].strip()
+        if atualizarBanco(idd, placa, nome, tell, carro, info):
+            session['mensagem'] = f'Cadastro da placa {placa} atualizado'
+            session['cor'] = '#0f8100'
+        else:
+            session['mensagem'] = 'Não cadastrado, ouve um erro'
+            session['cor'] = '#ff2222'
+
+    return redirect(url_for('home'))
+
+
 @app.route('/excluir', methods=['POST', 'GET'])
 def excluir():
-    print('entrou aqui')
     idd = request.form['id']
-    print(idd)
     excluir_dado(idd)
     return redirect(url_for('home'))
 
@@ -35,20 +52,29 @@ def excluir():
 @app.route('/pesquisar', methods=['POST', 'GET'])
 def pesquisar():
     if request.method == 'POST' and request.form.get('placaPesquisa'):
-        placa = request.form['placaPesquisa'].strip()
-    veri, casos = pesquisar_placa(placa)
-    return render_template('pesquisa.html', casos=casos, veri=veri, placa=placa, tema=pegar_tema())
+        info = request.form['placaPesquisa'].strip()
+        tipo = request.form['tipoPesquisa']
+    clientes = pesquisar_placa(info, tipo)
+    return render_template('lista.html', clientes=clientes, info=info, tipo=tipo, tema=pegar_tema())
 
 
 @app.route('/pesq/<placa>', methods=['POST', 'GET'])
 def link(placa):
-    veri, casos = pesquisar_placa(placa)
-    return render_template('pesquisa.html', casos=casos, veri=veri, placa=placa, tema=pegar_tema())
+    casos = pesquisar_placa(placa, 'placa')
+    return render_template('pesquisa.html', casos=casos, placa=placa, tema=pegar_tema())
 
 
 @app.route('/listar', methods=['POST', 'GET'])
 def listar():
-    return render_template('lista.html', tema=pegar_tema(), clientes= listar_dados())
+    return render_template('lista.html', tema=pegar_tema(), clientes=listar_dados())
+
+
+@app.route('/editar', methods=['POST', 'GET'])
+def edita():
+    if request.method == 'POST':
+        info = request.form['id']
+        casos = pesquisar_placa(info, 'id')
+    return render_template('edicao.html', tema=pegar_tema(), casos=casos)
 
 
 @app.route('/alterar-tema', methods=['POST', 'GET'])

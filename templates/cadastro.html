@@ -13,9 +13,6 @@
                 <h2>Cadastro clientes</h2>
                 <button class="button" id="btn_tema" name="tema" type="submit">TEMA</button>
             </form>
-            <form action="/listar" method="post">
-                <button class="button" id="btn_listar" name="tema" type="submit">LISTAR</button>
-            </form>
             <form action="/cadastro" method="post">
                 <div class="label">Nome:</div>
                 <input class="input" type="text" name="nometxt" id="nometxt" required/>
@@ -41,8 +38,15 @@
         </div>
         <div class="container">
             <form  action="/pesquisar"  method="post" id="formP">
-                <button class="button" id="btn_pesquisar" name="btn_pesquisar">PESQUISAR PLACA</button>
-                <input class="inputPes" type="text" name="placaPesquisa" id="placatxtP" required/>
+                <button class="button" id="btn_pesquisar" name="btn_pesquisar">LISTAR</button>
+                <div class="botaoMOBILE">
+		<select class="inputPes selct" name="tipoPesquisa" id="tipoPesquisa">
+                    <option value="placa">Placa</option>
+                    <option value="nome">Nome</option>
+                    <option value="carro">Carro</option>
+                </select>
+                <input class="inputPes" type="text" name="placaPesquisa" id="placatxtP"/ required>
+		</div>	
             </form>
         </div>
     </body>

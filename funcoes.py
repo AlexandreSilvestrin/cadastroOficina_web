@@ -5,7 +5,6 @@ import time
 def data():
     ano, mes, dia, hora, minuto, f, g, h, i = time.localtime()
     dataa = f"{dia:02}/{mes:02}/{ano} {hora}:{minuto:02}"
-    print(dataa)
     return dataa
 
 
@@ -44,20 +43,37 @@ def cadastrarBanco(placa, nome, tell, carro, info):
         return True
 
 
-def pesquisar_placa(placa):
+def atualizarBanco(id, placa, nome, tell, carro, info):
     try:
         banco = sqlite3.connect('clientes.db')
         cursor = banco.cursor()
-        resultados = cursor.execute(f'''SELECT * from clientes WHERE placa = '{placa}' ''').fetchall()
+        cursor.execute(
+            f'''UPDATE clientes SET nome = '{nome}', tell = '{tell}', placa='{placa}' ,carro = '{carro}', info = '{info}' WHERE id = '{id}' ''')
+    except sqlite3.Error as erro:
+        print(erro)
+        banco.close()
+        return False
+    else:
+        banco.commit()
+        banco.close()
+        return True
+
+
+def pesquisar_placa(info, tipo):
+    try:
+        banco = sqlite3.connect('clientes.db')
+        cursor = banco.cursor()
+        if tipo == 'id':
+            resultados = cursor.execute(f'''SELECT * from clientes WHERE id = '{info}' ''').fetchall()[0]
+        else:
+            resultados = cursor.execute(f'''SELECT * from clientes WHERE {tipo} like '%{info}%' ''').fetchall()
         banco.close()
     except sqlite3.Error as erro:
         banco.close()
         print(erro)
     else:
-        if len(resultados) == 0:
-            return True, resultados
-        else:
-            return False, resultados
+
+        return resultados
 
 
 def excluir_dado(idd):

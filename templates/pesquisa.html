@@ -8,15 +8,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="{{tema}}" id="bodyPeq">
-        {% if veri %}
-            <div class="container">
-                <h1>Não tem ocorrências para a placa {{ placa }}</h1>
-                <a href="{{ url_for('home') }}"><button class="button" id="btn_pesquisar">VOLTAR</button></a>
-            </div>
-        {% else %}
             {% for caso in casos[::-1]%}
                 <div class="container" id="labels">
-
                         <h2>Data: {{ caso[6] }}</h2>
                         <div class="labels">
                             <input class="input P" id="nomeP" value="Nome: {{ caso[2] }}" disabled>
@@ -32,14 +25,17 @@
                         <div class="labels">
                             <textarea class="textarea P" name="infotxt" id="infotxt" rows="10" disabled>Informação: {{ caso[5] }}</textarea>
                         </div>
-                    <form action="/excluir" method="post">
-                        <div class="bcP button-container">
+                    <div class="bcP button-container">
+                        <form action="/excluir" method="post" class="inline-form">
                             <input class="input P IDP" value="ID" disabled><input class="input P IDP" id='teste' name="id" value="{{caso[0]}}" readonly>
                             <button class="button" onclick="return confirm('Tem certeza que deseja excluir este item?')" id="btn_excluir">EXCLUIR</button>
-                        </div>
-                    </form>
+                        </form>
+                        <form action="/editar" method="post" class="inline-form">
+                            <button class="button" id="btn_editar">EDITAR</button>
+                            <input class="input P IDP" id="btn_editarr" style="visibility: hidden;" name="id" value="{{caso[0]}}" readonly>
+                        </form>
+                    </div>
                 </div>
             {% endfor %}
-        {% endif %}
     </body>
 </html>

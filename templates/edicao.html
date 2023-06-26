@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pesquisa</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="{{tema}}" id="bodyPeq">
+                <div class="container" id="labels">
+                    <form action="/atualizar" method="post">
+                        <h2>Data: {{ casos[6] }}</h2>
+                        <div class="labels">
+                            <input class="input P" id="nomeP" name="nometxt" placeholder="Nome: " value="{{ casos[2] }}" required>
+                            <input class="input P" id="tellP" name="telltxt" placeholder="Telefone: " value="{{ casos[3] }}" required>
+                        </div>
+                        <div class="labels">
+                            <input class="input P" id="carroP" name="carrotxt" placeholder="Carro: " value="{{ casos[4] }}" required>
+                            <input class="input P" id="placaP" name="placatxt" placeholder="Placa: " value="{{ casos[1] }}" required>
+                        </div>
+                        <div class="labels">
+                            <textarea class="textarea P" name="infotxt" placeholder="Informacao: " id="infotxt" rows="10" required>{{ casos[5] }}</textarea>
+                        </div>
+                        <div class="bcP button-container">
+                            <input class="input P IDP" value="ID" disabled><input class="input P IDP" id='teste' name="id" value="{{casos[0]}}" readonly>
+                            <button class="button" id="btn_salvar">ATUALIZAR</button>
+                        </div>
+                    </form>
+                </div>
+    </body>
+</html>
