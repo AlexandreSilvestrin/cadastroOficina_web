@@ -2,14 +2,14 @@
 <html>
     <head>
         <title>Cadastro</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/' + tema + '.css') }}">
         <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body class="{{tema}}" id="bodyCad">
+    <body class={{tema}} id="bodyCad">
         <div class="container">
-            <form action="/alterar-tema" method="post">
+            <form action="{{ url_for('trocar_tema') }}" method="POST">
                 <h2>Cadastro clientes</h2>
                 <button class="button" id="btn_tema" name="tema" type="submit">TEMA</button>
             </form>
@@ -33,7 +33,9 @@
                     <button class="button" id="btn_salvar" name="salvar" type="submit">SALVAR</button>
                 </div>
 
-                <div style="background-color: {{cor}};" class="mensagem">{{ mensagem }}</div>
+                <div class="mensagem" style="background-color: {{cor}}">{{ mensagem }}
+
+                </div>
             </form>
         </div>
         <div class="container">

@@ -2,37 +2,37 @@
 <html>
     <head>
         <title>Pesquisa</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/' + tema + '.css') }}">
         <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body class="{{tema}}" id="bodyPeq">
-            {% for caso in casos[::-1]%}
+            {% for caso in casos%}
                 <div class="container" id="labels">
-                        <h2>Data: {{ caso[6] }}</h2>
+                        <h2>Data: {{ caso.data }}</h2>
                         <div class="labels">
-                            <input class="input P" id="nomeP" value="Nome: {{ caso[2] }}" disabled>
+                            <input class="input P" id="nomeP" value="Nome: {{ caso.nome }}" disabled>
 
-                            <input class="input P" id="tellP" value="Telefone: {{ caso[3] }}" disabled>
+                            <input class="input P" id="tellP" value="Telefone: {{ caso.tell }}" disabled>
 
                         </div>
                         <div class="labels">
-                            <input class="input P" id="carroP" value="Carro: {{ caso[4] }}" disabled>
+                            <input class="input P" id="carroP" value="Carro: {{ caso.carro }}" disabled>
 
-                            <input class="input P" id="placaP" value="PLACA: {{ caso[1] }}" disabled>
+                            <input class="input P" id="placaP" value="PLACA: {{ caso.placa }}" disabled>
                         </div>
                         <div class="labels">
-                            <textarea class="textarea P" name="infotxt" id="infotxt" rows="10" disabled>Informação: {{ caso[5] }}</textarea>
+                            <textarea class="textarea P" name="infotxt" id="infotxt" rows="10" disabled>Informação: {{ caso.info}}</textarea>
                         </div>
                     <div class="bcP button-container">
                         <form action="/excluir" method="post" class="inline-form">
-                            <input class="input P IDP" value="ID" disabled><input class="input P IDP" id='teste' name="id" value="{{caso[0]}}" readonly>
+                            <input class="input P IDP" value="ID" disabled><input class="input P IDP" id='teste' name="id" value="{{caso.id}}" readonly>
                             <button class="button" onclick="return confirm('Tem certeza que deseja excluir este item?')" id="btn_excluir">EXCLUIR</button>
                         </form>
                         <form action="/editar" method="post" class="inline-form">
                             <button class="button" id="btn_editar">EDITAR</button>
-                            <input class="input P IDP" id="btn_editarr" style="visibility: hidden;" name="id" value="{{caso[0]}}" readonly>
+                            <input class="input P IDP" id="btn_editarr" style="visibility: hidden;" name="id" value="{{caso.id}}" readonly>
                         </form>
                     </div>
                 </div>
